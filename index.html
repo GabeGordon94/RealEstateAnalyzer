@@ -151,7 +151,7 @@
       <input type="number" name="adjustmentToPurchasePrice">
     </div>
 
-     <div class="form-group">
+    <div class="form-group">
       <label for="address">9. Address (Optional):</label>
       <input type="text" name="address">
     </div>
@@ -171,7 +171,7 @@
 
   <div id="output">
     <h2>Summary</h2>
-     <div class="calculation">
+    <div class="calculation">
       <p>Address: <span id="addressValue"></span></p>
     </div>
     <div class="calculation">
@@ -184,40 +184,51 @@
       <p>Purchase Price: $<span id="purchasePriceValue"></span></p>
     </div>
     <div class="calculation">
-      <p>Price PSF: $<span id="pricePSFValue"></span><span class="tooltip">Calculation: Purchase Price ÷ Square Feet</span></p>
+      <p>Price PSF: $<span id="pricePSFValue"></span><span class="tooltip">Calculation: Purchase Price ÷ Square
+          Feet</span></p>
     </div>
     <div class="calculation">
       <p>Cost to Stabilize: $<span id="costToStabilizeValue"></span></p>
     </div>
     <div class="calculation">
-      <p>Total Cost PSF: $<span id="totalCostPSFValue"></span><span class="tooltip">(Purchase Price + (Cost to Stabilize * Square Feet)) ÷ Square Feet</span></p>
+      <p>Total Cost PSF: $<span id="totalCostPSFValue"></span><span class="tooltip">(Purchase Price + (Cost to Stabilize
+          * Square Feet)) ÷ Square Feet</span></p>
     </div>
     <div class="calculation">
-      <p>In-Place NOI: $<span id="inPlaceNOIValue"></span><span class="tooltip">Calculation: In-Place Rent * Square Feet</span></p>
+      <p>In-Place NOI: $<span id="inPlaceNOIValue"></span><span class="tooltip">Calculation: In-Place Rent * Square
+          Feet</span></p>
     </div>
     <div class="calculation">
-      <p>In-Place Cap Rate: <span id="inPlaceCapRateValue"></span>%<span class="tooltip">(In-Place NOI ÷ Purchase Price) * 100</span></p>
+      <p>In-Place Cap Rate: <span id="inPlaceCapRateValue"></span>%<span class="tooltip">(In-Place NOI ÷ Purchase Price)
+          * 100</span></p>
     </div>
     <div class="calculation">
-      <p>Market Rent NOI: $<span id="marketRentNOIValue"></span><span class="tooltip">Calculation: Market Rent * Square Feet</span></p>
+      <p>Market Rent NOI: $<span id="marketRentNOIValue"></span><span class="tooltip">Calculation: Market Rent * Square
+          Feet</span></p>
     </div>
     <div class="calculation">
-      <p>Market Cap Rate: <span id="marketCapRateValue"></span>%<span class="tooltip">(Market Rent NOI ÷ Purchase Price) * 100</span></p>
+      <p>Market Cap Rate: <span id="marketCapRateValue"></span>%<span class="tooltip">(Market Rent NOI ÷ Purchase Price)
+          * 100</span></p>
     </div>
     <div class="calculation">
-      <p>Yield on Cost (In-Place): <span id="yieldOnCostInPlaceValue"></span>%<span class="tooltip">(In-Place NOI ÷ Total Investment) * 100</span></p>
+      <p>Yield on Cost (In-Place): <span id="yieldOnCostInPlaceValue"></span>%<span class="tooltip">(In-Place NOI ÷
+          Total Investment) * 100</span></p>
     </div>
     <div class="calculation">
-      <p>Market Yield on Cost: <span id="marketYieldOnCostValue"></span>%<span class="tooltip">(Market Rent NOI ÷ Total Investment) * 100</span></p>
+      <p>Market Yield on Cost: <span id="marketYieldOnCostValue"></span>%<span class="tooltip">(Market Rent NOI ÷ Total
+          Investment) * 100</span></p>
     </div>
     <div class="calculation">
-      <p>Trended Market Rent (6th Year): $<span id="trendedMarketRentValue"></span> PSF<span class="tooltip">Trended Market Rent (6th Year): $<span id="trendedMarketRentValue"></span> PSF</span></p>
+      <p>Trended Market Rent (6th Year): $<span id="trendedMarketRentValue"></span> PSF<span class="tooltip">Trended
+          Market Rent (6th Year): $<span id="trendedMarketRentValue"></span> PSF</span></p>
     </div>
     <div class="calculation">
-      <p>Trended Market Cap Rate: <span id="trendedMarketCapRateValue"></span>%<span class="tooltip">(Trended Market Rent NOI ÷ Purchase Price) * 100</span></p>
+      <p>Trended Market Cap Rate: <span id="trendedMarketCapRateValue"></span>%<span class="tooltip">(Trended Market
+          Rent NOI ÷ Purchase Price) * 100</span></p>
     </div>
     <div class="calculation">
-      <p>Trended Market Yield on Cost: <span id="trendedMarketYieldOnCostValue"></span>%<span class="tooltip">(Trended Market Rent NOI ÷ Total Investment) * 100</span></p>
+      <p>Trended Market Yield on Cost: <span id="trendedMarketYieldOnCostValue"></span>%<span class="tooltip">(Trended
+          Market Rent NOI ÷ Total Investment) * 100</span></p>
     </div>
   </div>
 
@@ -225,40 +236,39 @@
     const market_to_growth_rate = {
       "Atlanta": 0.03,
     }
-    
+
 
     function calculate() {
       alert("By Gabouuuuuuuuuuuu")
-        const purchasePrice = parseFloat(document.querySelector('input[name="purchasePrice"]').value);
-        const squareFeet = parseFloat(document.querySelector('input[name="squareFeet"]').value);
-        const costToStabilize = parseFloat(document.querySelector('input[name="costToStabilize"]').value);
-        const inPlaceNOI = parseFloat(document.querySelector('input[name="inPlaceNOI"]').value);
-        const marketRent = parseFloat(document.querySelector('input[name="marketRent"]').value);
-        const horizon = parseFloat(document.querySelector('input[name="horizon"]').value);
-        const avgRentGrowthRate = parseFloat(document.querySelector('input[name="avgRentGrowthRate"]').value);
-        const adjustmentToPurchasePrice = parseFloat(document.querySelector('input[name="adjustmentToPurchasePrice"]').value);
-        
-        if (!purchasePrice || !squareFeet || !costToStabilize || !inPlaceNOI || !marketRent || !horizon || !avgRentGrowthRate) {
-          alert('Please fill out all fields.');
-          return;
-        }
+      const purchasePrice = parseFloat(document.querySelector('input[name="purchasePrice"]').value);
+      const squareFeet = parseFloat(document.querySelector('input[name="squareFeet"]').value);
+      const costToStabilize = parseFloat(document.querySelector('input[name="costToStabilize"]').value);
+      const inPlaceNOI = parseFloat(document.querySelector('input[name="inPlaceNOI"]').value);
+      const marketRent = parseFloat(document.querySelector('input[name="marketRent"]').value);
+      const horizon = parseFloat(document.querySelector('input[name="horizon"]').value);
+      const avgRentGrowthRate = parseFloat(document.querySelector('input[name="avgRentGrowthRate"]').value);
+      const adjustmentToPurchasePrice = parseFloat(document.querySelector('input[name="adjustmentToPurchasePrice"]').value);
+      const address = document.querySelector('input[name="address"]').value.trim();
+      const market = document.querySelector('input[name="market"]').value.trim();
+      const submarket = document.querySelector('input[name="submarket"]').value.trim();
 
-        const pricePSF = purchasePrice / squareFeet;
-        const totalCostPSF = (purchasePrice + costToStabilize * squareFeet) / squareFeet;
-        const inPlaceNOIValue = inPlaceNOI * squareFeet;
-        const inPlaceCapRate = (inPlaceNOIValue / purchasePrice) * 100;
-        const marketRentNOI = marketRent * squareFeet;
-        const marketCapRate = (marketRentNOI / purchasePrice) * 100;
-        const yieldOnCostInPlace = (inPlaceNOIValue / (purchasePrice + costToStabilize * squareFeet)) * 100;
-        const marketYieldOnCost = (marketRentNOI / (purchasePrice + costToStabilize * squareFeet)) * 100;
-        const trendedMarketRent = marketRent * Math.pow(1 + avgRentGrowthRate / 100, horizon);
-        const trendedMarketRentNOI = trendedMarketRent * squareFeet;
-        const trendedMarketCapRate = (trendedMarketRentNOI / purchasePrice) * 100;
-        const trendedMarketYieldOnCost = (trendedMarketRentNOI / (purchasePrice + costToStabilize * squareFeet)) * 100;
-        const address = document.querySelector('input[name="address"]').value.trim();
-        const market = document.querySelector('input[name="market"]').value.trim();
-        const submarket = document.querySelector('input[name="submarket"]').value.trim();
+      if (!purchasePrice || !squareFeet || !costToStabilize || !inPlaceNOI || !marketRent || !horizon || !avgRentGrowthRate) {
+        alert('Please fill out all fields.');
+        return;
+      }
 
+      const pricePSF = purchasePrice / squareFeet;
+      const totalCostPSF = (purchasePrice + costToStabilize * squareFeet) / squareFeet;
+      const inPlaceNOIValue = inPlaceNOI * squareFeet;
+      const inPlaceCapRate = (inPlaceNOIValue / purchasePrice) * 100;
+      const marketRentNOI = marketRent * squareFeet;
+      const marketCapRate = (marketRentNOI / purchasePrice) * 100;
+      const yieldOnCostInPlace = (inPlaceNOIValue / (purchasePrice + costToStabilize * squareFeet)) * 100;
+      const marketYieldOnCost = (marketRentNOI / (purchasePrice + costToStabilize * squareFeet)) * 100;
+      const trendedMarketRent = marketRent * Math.pow(1 + avgRentGrowthRate / 100, horizon);
+      const trendedMarketRentNOI = trendedMarketRent * squareFeet;
+      const trendedMarketCapRate = (trendedMarketRentNOI / purchasePrice) * 100;
+      const trendedMarketYieldOnCost = (trendedMarketRentNOI / (purchasePrice + costToStabilize * squareFeet)) * 100;
 
       const outputDiv = document.getElementById("output");
 
@@ -301,7 +311,7 @@
       const trendedMarketYieldOnCostElement = document.getElementById("trendedMarketYieldOnCostValue");
       trendedMarketYieldOnCostElement.textContent = trendedMarketYieldOnCost.toFixed(2);
 
-         const addressElement = document.getElementById("addressValue");
+      const addressElement = document.getElementById("addressValue");
       const marketElement = document.getElementById("marketValue");
       const submarketElement = document.getElementById("submarketValue");
 
