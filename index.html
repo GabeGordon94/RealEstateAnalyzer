@@ -127,7 +127,7 @@
   <h1>Faropoint Investment Calculator</h1>
   <form id="realEstateForm">
     <div class="form-group">
-      <label for="purchasePrice">1. Purchase Price:</label>
+      <label for="purchasePrice">1. Purchase Price ($):</label>
       <input type="text" name="purchasePrice" required oninput="formatNumberInput(this)">
     </div>
 
@@ -137,7 +137,7 @@
     </div>
 
     <div class="form-group">
-      <label for="costToStabilize">3. Cost to Stabilize:</label>
+      <label for="costToStabilize">3. Cost to Stabilize ($):</label>
       <input type="number" name="costToStabilize" required>
     </div>
 
@@ -303,25 +303,25 @@
       const outputDiv = document.getElementById("output");
 
       const purchasePriceValueElement = document.getElementById("purchasePriceValue");
-      purchasePriceValueElement.textContent = purchasePrice.toFixed(2);
+      purchasePriceValueElement.textContent = purchasePrice.toLocaleString();
 
       const costToStabilizeValueElement = document.getElementById("costToStabilizeValue");
-      costToStabilizeValueElement.textContent = costToStabilize.toFixed(2);
+      costToStabilizeValueElement.textContent = costToStabilize.toLocaleString();
 
       const pricePSFElement = document.getElementById("pricePSFValue");
-      pricePSFElement.textContent = pricePSF.toFixed(2);
+      pricePSFElement.textContent = pricePSF.toLocaleString();
 
       const totalCostPSFElement = document.getElementById("totalCostPSFValue");
-      totalCostPSFElement.textContent = totalCostPSF.toFixed(2);
+      totalCostPSFElement.textContent = totalCostPSF.toLocaleString();
 
       const inPlaceNOIElement = document.getElementById("inPlaceNOIValue");
-      inPlaceNOIElement.textContent = inPlaceNOIValue.toFixed(2);
+      inPlaceNOIElement.textContent = inPlaceNOIValue.toLocaleString();
 
       const inPlaceCapRateElement = document.getElementById("inPlaceCapRateValue");
-      inPlaceCapRateElement.textContent = inPlaceCapRate.toFixed(2);
+      inPlaceCapRateElement.textContent = inPlaceCapRate.toLocaleString();
 
       const marketRentNOIElement = document.getElementById("marketRentNOIValue");
-      marketRentNOIElement.textContent = marketRentNOI.toFixed(2);
+      marketRentNOIElement.textContent = marketRentNOI.toLocaleString();
 
       const marketCapRateElement = document.getElementById("marketCapRateValue");
       marketCapRateElement.textContent = marketCapRate.toFixed(2);
@@ -333,7 +333,7 @@
       marketYieldOnCostElement.textContent = marketYieldOnCost.toFixed(2);
 
       const trendedMarketRentElement = document.getElementById("trendedMarketRentValue");
-      trendedMarketRentElement.textContent = trendedMarketRent.toFixed(2);
+      trendedMarketRentElement.textContent = trendedMarketRent.toLocaleString();
 
       const trendedMarketCapRateElement = document.getElementById("trendedMarketCapRateValue");
       trendedMarketCapRateElement.textContent = trendedMarketCapRate.toFixed(2);
