@@ -2,9 +2,9 @@
 <html>
 
 <head>
-  <title>Real Estate Investor Analyzer</title>
-  <link rel="icon" type="image/x-icon" href="yannai.ico">
+  <title>Faropoint Investment Calculator</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <link rel="icon" type="image/jpeg" href="logo.jpg">
 
   <style>
     body {
@@ -105,15 +105,29 @@
     .calculation:hover .tooltip {
       opacity: 1;
     }
+    #logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 100px; /* Adjust the width as needed */
+      height: auto; /* Automatically scale the height based on the width */
+    }
+    @media (max-width: 900px) {
+      #logo {
+        display: none;
+      }
+    }
   </style>
 </head>
 
 <body>
-  <h1>Real Estate Investor Analyzer</h1>
+  <img src="logo.jpg" alt="Logo" id="logo">
+
+  <h1>Faropoint Investment Calculator</h1>
   <form id="realEstateForm">
     <div class="form-group">
       <label for="purchasePrice">1. Purchase Price:</label>
-      <input type="text" name="purchasePrice" required oninput="formatNumberInput(this)">
+      <input type="text" name="purchasePrice" required oninput="formatNumberInput(this)" step="any">
     </div>
 
     <div class="form-group">
