@@ -40,12 +40,12 @@
 
     <div class="form-group">
       <label for="horizon">6. Horizon (in Years):</label>
-      <input type="number" name="horizon" required >
+      <input type="number" name="horizon" required>
     </div>
 
     <div class="form-group">
       <label for="avgRentGrowthRate">7. Avg Market Rent Growth (%):</label>
-      <input type="number" name="avgRentGrowthRate" required >
+      <input type="number" name="avgRentGrowthRate" required>
     </div>
 
     <div class="form-group">
@@ -135,7 +135,7 @@
   </div>
 
   <script>
-    document.addEventListener('keydown', function(event) {
+    document.addEventListener('keydown', function (event) {
       if (event.keyCode === 13 || event.key === "Enter") {
         calculate();
       }
@@ -143,8 +143,8 @@
 
     function formatNumberInput(input) {
       const value = input.value.replace(/,/g, '');
-      
-      if (isNaN(value) ) {
+
+      if (isNaN(value)) {
         input.value = Number(value.slice(0, -1)).toLocaleString();
         return;
       };
@@ -152,7 +152,7 @@
     }
 
 
-    function normalizeFloats(input){
+    function normalizeFloats(input) {
       return parseFloat(input.replace(/,/g, ''))
     }
 
