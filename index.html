@@ -25,7 +25,7 @@
 
     <div class="form-group">
       <label for="costToStabilize">3. Cost to Stabilize (PSF):</label>
-      <input type="text" name="costToStabilize" required oninput="formatNumberInput(this)">
+      <input type="text" name="costToStabilize" step=".01" required>
     </div>
 
     <div class="form-group">
@@ -191,22 +191,22 @@
       squareFeetValueElement.textContent = squareFeet.toLocaleString();
 
       const costToStabilizeValueElement = document.getElementById("costToStabilizeValue");
-      costToStabilizeValueElement.textContent = costToStabilize.toLocaleString(undefined, { maximumFractionDigits: 2 });
+      costToStabilizeValueElement.textContent = costToStabilize.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
       const pricePSFElement = document.getElementById("pricePSFValue");
-      pricePSFElement.textContent = pricePSF.toLocaleString(undefined, { maximumFractionDigits: 2 });
+      pricePSFElement.textContent = pricePSF.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
       const totalCostPSFElement = document.getElementById("totalCostPSFValue");
-      totalCostPSFElement.textContent = totalCostPSF.toLocaleString(undefined, { maximumFractionDigits: 2 });
+      totalCostPSFElement.textContent = totalCostPSF.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
       const inPlaceNOIElement = document.getElementById("inPlaceNOIValue");
-      inPlaceNOIElement.textContent = inPlaceNOIValue.toLocaleString(undefined, { maximumFractionDigits: 2 });
+      inPlaceNOIElement.textContent = inPlaceNOIValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
       const inPlaceCapRateElement = document.getElementById("inPlaceCapRateValue");
       inPlaceCapRateElement.textContent = inPlaceCapRate.toFixed(2);
 
       const marketRentNOIElement = document.getElementById("marketRentNOIValue");
-      marketRentNOIElement.textContent = marketRentNOI.toLocaleString(undefined, { maximumFractionDigits: 2 });
+      marketRentNOIElement.textContent = marketRentNOI.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
       const marketCapRateElement = document.getElementById("marketCapRateValue");
       marketCapRateElement.textContent = marketCapRate.toFixed(2);
@@ -218,7 +218,7 @@
       marketYieldOnCostElement.textContent = marketYieldOnCost.toFixed(2);
 
       const trendedMarketRentElement = document.getElementById("trendedMarketRentValue");
-      trendedMarketRentElement.textContent = trendedMarketRent.toLocaleString(undefined, { maximumFractionDigits: 2 });
+      trendedMarketRentElement.textContent = trendedMarketRent.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
       const trendedMarketCapRateElement = document.getElementById("trendedMarketCapRateValue");
       trendedMarketCapRateElement.textContent = trendedMarketCapRate.toFixed(2);
