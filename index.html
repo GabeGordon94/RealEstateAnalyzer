@@ -49,11 +49,6 @@
     </div>
 
     <div class="form-group">
-      <label for="adjustmentToPurchasePrice">8. Adjustment to Purchase Price (Optional):</label>
-      <input type="text" name="adjustmentToPurchasePrice" oninput="formatNumberInput(this)">
-    </div>
-
-    <div class="form-group">
       <label for="address">9. Address (Optional):</label>
       <input type="text" name="address">
     </div>
@@ -81,6 +76,9 @@
     </div>
     <div class="calculation">
       <p>Submarket: <span id="submarketValue"></span></p>
+    </div>
+    <div class="calculation">
+      <p>Square Feet: $<span id="squareFeetValue"></span></p>
     </div>
     <div class="calculation">
       <p>Purchase Price: $<span id="purchasePriceValue"></span></p>
@@ -164,7 +162,6 @@
       const marketRent = normalizeFloats(document.querySelector('input[name="marketRent"]').value);
       const horizon = normalizeFloats(document.querySelector('input[name="horizon"]').value);
       const avgRentGrowthRate = normalizeFloats(document.querySelector('input[name="avgRentGrowthRate"]').value);
-      const adjustmentToPurchasePrice = normalizeFloats(document.querySelector('input[name="adjustmentToPurchasePrice"]').value);
       const address = document.querySelector('input[name="address"]').value.trim();
       const market = document.querySelector('input[name="market"]').value.trim();
       const submarket = document.querySelector('input[name="submarket"]').value.trim();
@@ -175,9 +172,9 @@
 
       const pricePSF = purchasePrice / squareFeet;
       const totalCostPSF = (purchasePrice + costToStabilize * squareFeet) / squareFeet;
-      const inPlaceNOIValue = inPlaceNOI * squareFeet;
+      const inPlaceNOIValue = inPlaceNOI;
       const inPlaceCapRate = (inPlaceNOIValue / purchasePrice) * 100;
-      const marketRentNOI = marketRent * squareFeet;
+      const marketRentNOI = marketRent;
       const marketCapRate = (marketRentNOI / purchasePrice) * 100;
       const yieldOnCostInPlace = (inPlaceNOIValue / (purchasePrice + costToStabilize * squareFeet)) * 100;
       const marketYieldOnCost = (marketRentNOI / (purchasePrice + costToStabilize * squareFeet)) * 100;
@@ -191,23 +188,26 @@
       const purchasePriceValueElement = document.getElementById("purchasePriceValue");
       purchasePriceValueElement.textContent = purchasePrice.toLocaleString();
 
+      const squareFeetValueElement = document.getElementById("squareFeetValue");
+      squareFeetValueElement.textContent = squareFeet.toLocaleString();
+
       const costToStabilizeValueElement = document.getElementById("costToStabilizeValue");
-      costToStabilizeValueElement.textContent = costToStabilize.toLocaleString();
+      costToStabilizeValueElement.textContent = costToStabilize.toLocaleString(undefined, { maximumFractionDigits: 2 });
 
       const pricePSFElement = document.getElementById("pricePSFValue");
-      pricePSFElement.textContent = pricePSF.toLocaleString();
+      pricePSFElement.textContent = pricePSF.toLocaleString(undefined, { maximumFractionDigits: 2 });
 
       const totalCostPSFElement = document.getElementById("totalCostPSFValue");
-      totalCostPSFElement.textContent = totalCostPSF.toLocaleString();
+      totalCostPSFElement.textContent = totalCostPSF.toLocaleString(undefined, { maximumFractionDigits: 2 });
 
       const inPlaceNOIElement = document.getElementById("inPlaceNOIValue");
-      inPlaceNOIElement.textContent = inPlaceNOIValue.toLocaleString();
+      inPlaceNOIElement.textContent = inPlaceNOIValue.toLocaleString(undefined, { maximumFractionDigits: 2 });
 
       const inPlaceCapRateElement = document.getElementById("inPlaceCapRateValue");
-      inPlaceCapRateElement.textContent = inPlaceCapRate.toLocaleString();
+      inPlaceCapRateElement.textContent = inPlaceCapRate.toFixed(2);
 
       const marketRentNOIElement = document.getElementById("marketRentNOIValue");
-      marketRentNOIElement.textContent = marketRentNOI.toLocaleString();
+      marketRentNOIElement.textContent = marketRentNOI.toLocaleString(undefined, { maximumFractionDigits: 2 });
 
       const marketCapRateElement = document.getElementById("marketCapRateValue");
       marketCapRateElement.textContent = marketCapRate.toFixed(2);
@@ -219,7 +219,7 @@
       marketYieldOnCostElement.textContent = marketYieldOnCost.toFixed(2);
 
       const trendedMarketRentElement = document.getElementById("trendedMarketRentValue");
-      trendedMarketRentElement.textContent = trendedMarketRent.toLocaleString();
+      trendedMarketRentElement.textContent = trendedMarketRent.toLocaleString(undefined, { maximumFractionDigits: 2 });
 
       const trendedMarketCapRateElement = document.getElementById("trendedMarketCapRateValue");
       trendedMarketCapRateElement.textContent = trendedMarketCapRate.toFixed(2);
