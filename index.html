@@ -113,42 +113,42 @@
   <form id="realEstateForm">
     <div class="form-group">
       <label for="purchasePrice">1. Purchase Price:</label>
-      <input type="number" name="purchasePrice" required>
+      <input type="text" name="purchasePrice" required oninput="formatNumberInput(this)">
     </div>
 
     <div class="form-group">
       <label for="squareFeet">2. Square Feet:</label>
-      <input type="number" name="squareFeet" required>
+      <input type="text" name="squareFeet" required oninput="formatNumberInput(this)">
     </div>
 
     <div class="form-group">
       <label for="costToStabilize">3. Cost to Stabilize:</label>
-      <input type="number" name="costToStabilize" required>
+      <input type="text" name="costToStabilize" required oninput="formatNumberInput(this)">
     </div>
 
     <div class="form-group">
       <label for="inPlaceNOI">4. In Place NOI (PSF):</label>
-      <input type="number" name="inPlaceNOI" required>
+      <input type="text" name="inPlaceNOI" required oninput="formatNumberInput(this)">
     </div>
 
     <div class="form-group">
       <label for="marketRent">5. Market Rent (PSF):</label>
-      <input type="number" name="marketRent" required>
+      <input type="text" name="marketRent" required oninput="formatNumberInput(this)">
     </div>
 
     <div class="form-group">
       <label for="horizon">6. Horizon (in Years):</label>
-      <input type="number" name="horizon" required>
+      <input type="text" name="horizon" required oninput="formatNumberInput(this)">
     </div>
 
     <div class="form-group">
       <label for="avgRentGrowthRate">7. Average Rent Growth Rate (%):</label>
-      <input type="number" name="avgRentGrowthRate" required>
+      <input type="text" name="avgRentGrowthRate" required oninput="formatNumberInput(this)">
     </div>
 
     <div class="form-group">
       <label for="adjustmentToPurchasePrice">8. Adjustment to Purchase Price (Optional):</label>
-      <input type="number" name="adjustmentToPurchasePrice">
+      <input type="text" name="adjustmentToPurchasePrice" oninput="formatNumberInput(this)">
     </div>
 
     <div class="form-group">
@@ -233,21 +233,36 @@
   </div>
 
   <script>
-    const market_to_growth_rate = {
-      "Atlanta": 0.03,
+    document.addEventListener('keydown', function(event) {
+      if (event.keyCode === 13 || event.key === "Enter") {
+        calculate();
+      }
+    });
+
+    function formatNumberInput(input) {
+      const value = input.value.replace(/,/g, '');
+      
+      if (isNaN(value) ) {
+        input.value = Number(value.slice(0, -1)).toLocaleString();
+        return;
+      };
+      input.value = Number(value).toLocaleString();
     }
 
 
+    function normalizeFloats(input){
+      return parseFloat(input.replace(/,/g, ''))
+    }
+
     function calculate() {
-      alert("By Gabouuuuuuuuuuuu")
-      const purchasePrice = parseFloat(document.querySelector('input[name="purchasePrice"]').value);
-      const squareFeet = parseFloat(document.querySelector('input[name="squareFeet"]').value);
-      const costToStabilize = parseFloat(document.querySelector('input[name="costToStabilize"]').value);
-      const inPlaceNOI = parseFloat(document.querySelector('input[name="inPlaceNOI"]').value);
-      const marketRent = parseFloat(document.querySelector('input[name="marketRent"]').value);
-      const horizon = parseFloat(document.querySelector('input[name="horizon"]').value);
-      const avgRentGrowthRate = parseFloat(document.querySelector('input[name="avgRentGrowthRate"]').value);
-      const adjustmentToPurchasePrice = parseFloat(document.querySelector('input[name="adjustmentToPurchasePrice"]').value);
+      const purchasePrice = normalizeFloats(document.querySelector('input[name="purchasePrice"]').value);
+      const squareFeet = normalizeFloats(document.querySelector('input[name="squareFeet"]').value);
+      const costToStabilize = normalizeFloats(document.querySelector('input[name="costToStabilize"]').value);
+      const inPlaceNOI = normalizeFloats(document.querySelector('input[name="inPlaceNOI"]').value);
+      const marketRent = normalizeFloats(document.querySelector('input[name="marketRent"]').value);
+      const horizon = normalizeFloats(document.querySelector('input[name="horizon"]').value);
+      const avgRentGrowthRate = normalizeFloats(document.querySelector('input[name="avgRentGrowthRate"]').value);
+      const adjustmentToPurchasePrice = normalizeFloats(document.querySelector('input[name="adjustmentToPurchasePrice"]').value);
       const address = document.querySelector('input[name="address"]').value.trim();
       const market = document.querySelector('input[name="market"]').value.trim();
       const submarket = document.querySelector('input[name="submarket"]').value.trim();
