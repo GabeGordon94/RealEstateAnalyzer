@@ -14,13 +14,13 @@
   <h1>Faropoint Investment Calculator</h1>
   <form id="realEstateForm" onsubmit="event.preventDefault(); calculate()">
     <div class="form-group">
-      <label for="purchasePrice">1. Purchase Price ($):</label>
-      <input type="text" name="purchasePrice" required oninput="formatNumberInput(this)">
+      <label for="squareFeet">1. Square Feet:</label>
+      <input type="text" name="squareFeet" required oninput="formatNumberInput(this)">
     </div>
 
     <div class="form-group">
-      <label for="squareFeet">2. Square Feet:</label>
-      <input type="text" name="squareFeet" required oninput="formatNumberInput(this)">
+      <label for="purchasePrice">2. Purchase Price ($):</label>
+      <input type="text" name="purchasePrice" required oninput="formatNumberInput(this)">
     </div>
 
     <div class="form-group">
@@ -102,6 +102,10 @@
           * 100</span></p>
     </div>
     <div class="calculation">
+      <p>In-Place YOC: <span id="yieldOnCostInPlaceValue"></span>%<span class="tooltip">(In-Place NOI ÷
+          Total Cost PSF) * 100</span></p>
+    </div>
+    <div class="calculation">
       <p>Market Rent NOI: $<span id="marketRentNOIValue"></span><span class="tooltip">Calculation: Market Rent</span>
       </p>
     </div>
@@ -110,11 +114,7 @@
           * 100</span></p>
     </div>
     <div class="calculation">
-      <p>Yield on Cost (In-Place): <span id="yieldOnCostInPlaceValue"></span>%<span class="tooltip">(In-Place NOI ÷
-          Total Cost PSF) * 100</span></p>
-    </div>
-    <div class="calculation">
-      <p>Market Yield on Cost: <span id="marketYieldOnCostValue"></span>%<span class="tooltip">(Market Rent NOI ÷ Total
+      <p>Market YOC: <span id="marketYieldOnCostValue"></span>%<span class="tooltip">(Market Rent NOI ÷ Total
           Cost PSF) * 100</span></p>
     </div>
     <div class="calculation">
@@ -126,7 +126,7 @@
           Rent NOI ÷ Price PSF) * 100</span></p>
     </div>
     <div class="calculation">
-      <p>Trended Market Yield on Cost: <span id="trendedMarketYieldOnCostValue"></span>%<span class="tooltip">(Trended
+      <p>Trended Market YOC: <span id="trendedMarketYieldOnCostValue"></span>%<span class="tooltip">(Trended
           Market Rent NOI ÷ Total Cost PSF) * 100</span></p>
     </div>
   </div>
